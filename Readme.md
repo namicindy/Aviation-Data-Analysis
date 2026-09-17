@@ -24,7 +24,7 @@ En cours — voir [docs/architecture.md](docs/architecture.md#5-statut) pour l'a
 │   ├── ingestion/      Scripts de collecte des données (OpenSky, DGAC, Open-Meteo)
 │   ├── transformation/ Nettoyage et modélisation des données
 │   └── analysis/       Analyses et modèles
-├── notebooks/          Exploration (Jupyter) — pas le code final
+├── notebooks/          Exploration (Jupyter) 
 └── data/                Données brutes et traitées (non versionnées dans git)
 ```
 
