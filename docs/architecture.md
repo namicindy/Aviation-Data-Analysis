@@ -14,8 +14,6 @@
 3. Quel est l'impact estimé en coût / passagers affectés pour une compagnie type si
    elle réduisait de 10% ses retards sur les aéroports les plus touchés ?
 
-
-
 ## 2. Sources de données
 
 | Source | Donnée | Fréquence | Lien |
@@ -25,6 +23,10 @@
 | Open-Meteo | Météo par aéroport (vent, température, précipitations) | Horaire | open-meteo.com |
 
 ## 3. Modèle de données — schéma en étoile
+
+Une table de faits (`vols`) au centre, entourée de 4 tables de dimension
+(`compagnies`, `aeroports`, `dates`, `meteo`). 
+
 
 ### Table de faits `vols`
 | Colonne | Description |
@@ -71,14 +73,15 @@
 | meteo_id | Identifiant |
 | aeroport_id | Référence vers `aeroports` |
 | date_heure | Horodatage |
-| temperature | En °C |
+| temperature_c | En °C |
 | vent_kmh | Vitesse du vent |
-| visibilite_km | Visibilité |
 | precipitation_mm | Précipitations |
+| weather_code | Code météo standardisé WMO (0 = ciel dégagé, 61-67 = pluie, 95+ = orage...) |
+
 
 ## 4. Stack technique
 
-| Étape | Outil |
+| Étape | Outil | Pourquoi |
 |---|---|
 | Ingestion | Python (requests) + Airflow |
 | Stockage | Google BigQuery (free tier) |
