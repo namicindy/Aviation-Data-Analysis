@@ -64,8 +64,9 @@ Une table de faits (`vols`) au centre, entourée de 4 tables de dimension
 | Colonne | Description |
 |---|---|
 | compagnie_id | Identifiant |
-| code_iata | Code IATA compagnie |
-| nom | Nom complet |
+| code_icao | Code ICAO (3 lettres, ex: AFR): extrait du callsign Opensky |
+| code_iata | Code IATA compagnie (2 caractères, ex: AF): connu pour les compagnies référencées |
+| nom | Nom complet, ou "Inconnue/privé" si le code ICAO n'est pas reconnu |
 
 ### Dimension `meteo`
 | Colonne | Description |
@@ -81,7 +82,7 @@ Une table de faits (`vols`) au centre, entourée de 4 tables de dimension
 
 ## 4. Stack technique
 
-| Étape | Outil | Pourquoi |
+| Étape | Outil |
 |---|---|
 | Ingestion | Python (requests) + Airflow |
 | Stockage | Google BigQuery (free tier) |
